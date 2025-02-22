@@ -1,8 +1,4 @@
 ![project sample](https://github.com/user-attachments/assets/97750ed3-f841-41ea-8eed-c36133f1deae)
-
-
-If you’re using **Docker** to containerize your **Startup Pitching Platform** application, the `README.md` file should include instructions for setting up and running the project with Docker. Below is an updated **README.md** file with Docker-specific instructions.
-
 ---
 
 # Startup Pitching Platform
