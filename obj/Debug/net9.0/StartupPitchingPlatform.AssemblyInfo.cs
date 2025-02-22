@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StartupPitchingPlatform")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+92810c420c5eb1be0e1db23328bbabd5a0fa5bf9")]
 [assembly: System.Reflection.AssemblyProductAttribute("StartupPitchingPlatform")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StartupPitchingPlatform")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

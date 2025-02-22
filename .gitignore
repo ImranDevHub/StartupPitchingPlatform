@@ -1,0 +1,55 @@
+# User-specific files
+.idea/
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# ASP.NET Core
+bin/
+obj/
+
+# VS for Mac
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Microsoft Azure Web App publish folder
+publish/
+
+# Local History for JetBrains Rider
+.idea/.idea.history/
+
+# NPM packages
+node_modules/
+
+# ASP.NET Core SignalR
+wwwroot/signalr/
+
+# Local environment variables
+.env
+
+# Dotnet build output
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ebug-netcoreapp*/
+
+[Dd]evelopment/
+[Dd]evelopmentPublic/
+
+# Logs
+logs/
