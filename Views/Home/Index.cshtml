@@ -1,0 +1,115 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<StartupPitchingPlatform.Models.StartupPost>
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Startup Posts";
+}
+
+<style>
+    .hero {
+        text-align: center;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        color: white;
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .search-bar {
+        margin: 20px auto;
+        max-width: 600px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+</style>
+
+<div class="hero">
+    <h1>Showcase your startups and contribute</h1>
+</div>
+
+<form asp-action="Search" method="get" class="search-bar">
+    <div class="input-group">
+        <input type="text" name="query" class="form-control" placeholder="Search posts..." />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<div class="grid-container">
+    @foreach (var post in Model)
+    {
+        <div class="card">
+            @if (!string.IsNullOrEmpty(post.ImageUrl))
+            {
+                <img src="@post.ImageUrl" alt="Post Image" />
+            }
+            <div class="card-body">
+                <h2 class="card-title">@post.Title</h2>
+ <p class="card-text">
+        @if (post.Description.Length > 100)
+        {
+            @post.Description.Substring(0, 100)
+        }
+        else
+        {
+            @post.Description
+        }
+    </p>                <small class="text-muted">Posted on @post.PostedOn</small>
+                <div class="mt-2">
+                    <strong>Category:</strong> @post.Category
+                </div>
+                <div>
+                    <strong>Author:</strong>
+                    @if (!string.IsNullOrEmpty(post.AuthorId))
+                    {
+                        var author = await UserManager.FindByIdAsync(post.AuthorId);
+                        <span>@(author?.UserName ?? "Unknown")</span>
+                    }
+                </div>
+                <div class="mt-3">
+                    @if (!string.IsNullOrEmpty(post.GitHubUrl))
+                    {
+                        <a href="@post.GitHubUrl" target="_blank" class="btn btn-outline-dark btn-sm">GitHub</a>
+                    }
+                    @if (!string.IsNullOrEmpty(post.LinkedInUrl))
+                    {
+                        <a href="@post.LinkedInUrl" target="_blank" class="btn btn-outline-primary btn-sm">LinkedIn</a>
+                    }
+                </div>
+            </div>
+            <div>
+                <a asp-action="Details" asp-route-id="@post.Id" class="btn btn-sm btn-info">Details</a>
+            </div>
+        </div>
+    }
+</div>

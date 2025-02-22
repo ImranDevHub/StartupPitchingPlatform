@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - StartupPitchingPlatform</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="font-size: 24px; font-weight: bold; color: #007bff;">SC</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation" style="border-color: #007bff;">
+            <span class="navbar-toggler-icon" style="color: #007bff;"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" style="color: #007bff; font-weight: 500; padding: 8px 16px; transition: color 0.3s ease;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="StartupPosts" asp-action="Index" style="color: #007bff; font-weight: 500; padding: 8px 16px; transition: color 0.3s ease;">Dashboard</a>
+                </li>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index" style="color: #007bff; font-weight: 500; padding: 8px 16px; transition: color 0.3s ease;">Admin</a>
+                    </li>
+                }
+            </ul>
+            <partial name="_LoginPartial" /> <!-- Identity login/logout links -->
+        </div>
+    </div>
+</nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody() <!-- Main content goes here -->
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted" style="background-color: #f8f9fa; padding: 20px 0; text-align: center; position: relative;">
+    <div class="container" style="color: #6c757d; font-size: 14px;">
+        &copy; 2024 - StartupPitchingPlatform - <a asp-controller="Home" asp-action="Privacy" style="color: #007bff; text-decoration: none;">Privacy</a>
+
+    </div>
+    <button onclick="topFunction()" id="backToTopBtn" title="Go to top" class="btn btn-primary" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; border-radius: 50%; background-color: #007bff; border: none; color: white; cursor: pointer; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); transition: background-color 0.3s ease;">
+        ↑
+    </button>
+    <script>
+        // Back to top button script
+        let mybutton = document.getElementById("backToTopBtn");
+        window.onscroll = function() { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false) <!-- Optional scripts section -->
+</body>
+</html>
